@@ -33,11 +33,11 @@ function createNewTodoItem(text) {
 
     elem.innerHTML = `
         <label class="list-item">
-        <input type="checkbox" name="todoItem">
-        <span class="checkmark"></span>
-        <span class="text">${text}</span>
-    </label>
-    <span class="remove"></span>
+            <input type="checkbox" name="todoItem">
+            <span class="checkmark"></span>
+            <span class="text">${text}</span>
+        </label>
+        <span class="remove"></span>
     `;
 
     if (
