@@ -1,5 +1,13 @@
+/* =================================
+        Font from Google Fonts
+   ================================= */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap");
 
+/* ========= Section is End ======== */
+
+/* =================================
+                Layout
+   ================================= */
 html,
 body {
     margin: 0;
@@ -22,6 +30,19 @@ img {
     align-items: center;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+/* ========= Section is End ======== */
+
+/* =================================
+            Header Start
+   ================================= */
 .theme-dark {
     --bg-top-image: 0 0 url(../images/bg-desktop-dark.jpg) no-repeat;
     --main-bg: hsl(235, 21%, 11%);
@@ -43,14 +64,16 @@ img {
 body {
     font: 400 18px/1 "Josefin Sans", sans-serf;
     background: var(--bg-top-image);
+    background-size: 100vw 45vh;
     background-color: var(--main-bg);
-    background-size: contain;
     color: var(--font-color);
+    padding: 0 2rem;
 }
 
 header,
 main {
-    max-width: 545px;
+    /* max-width: 54.5rem; */
+    max-width: 32.7rem;
     margin: 0 auto;
 }
 
@@ -59,22 +82,22 @@ header {
     padding: 52px 0 11px;
 }
 
-h1 {
+.header_title {
     font-weight: 700;
     font-size: 2.5rem;
     color: #fff;
     letter-spacing: 1rem;
 }
 
-.theme-block {
+.header_cta {
     margin: -10px 0 0;
 }
 
-.theme-block #theme {
+.header_cta #theme {
     display: none;
 }
 
-.theme-block #theme + label::before {
+.header_cta #theme+label::before {
     content: "";
     background: url(../images/icon-sun.svg);
     display: block;
@@ -83,11 +106,16 @@ h1 {
     cursor: pointer;
 }
 
-.theme-block #theme:checked + label::before {
+.header_cta #theme:checked+label::before {
     background: url(../images/icon-moon.svg);
 }
 
-.add-new-item {
+/* ========= Section is End ======== */
+
+/* =================================
+             Main Start
+   ================================= */
+.main_creator {
     background: var(--todo-bg);
     height: 65px;
     border-radius: 5px;
@@ -96,7 +124,7 @@ h1 {
     position: relative;
 }
 
-.add-new-item #addItem {
+.main_creator #addItem {
     background: transparent;
     color: var(--font-color);
     border: 0;
@@ -108,7 +136,7 @@ h1 {
     letter-spacing: -0.3px;
 }
 
-.add-new-item span {
+.main_creator span {
     width: 25px;
     height: 25px;
     border: 1px solid var(--font-color);
@@ -120,12 +148,12 @@ h1 {
     cursor: pointer;
 }
 
-.add-new-item span:hover {
+.main_creator span:hover {
     background: center url(../images/icon-check.svg) no-repeat,
         linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
-.content {
+.main_content {
     background: var(--todo-bg);
     border-radius: 5px;
     box-shadow: 0 42px 30px -9px var(--todo-shadow);
@@ -171,22 +199,20 @@ ul li.hidden {
     display: none;
 }
 
-ul li input[type="checkbox"] ~ .checkmark {
+ul li input[type="checkbox"]~.checkmark {
     border: 1px solid var(--font-color);
     border-radius: 50px;
 }
 
-ul li input[type="checkbox"] ~ .checkmark:hover {
+ul li input[type="checkbox"]~.checkmark:hover {
     border: 0;
     padding: 1px;
-    background: linear-gradient(
-        135deg,
-        hsl(192, 100%, 67%),
-        hsl(280, 87%, 65%)
-    );
+    background: linear-gradient(135deg,
+            hsl(192, 100%, 67%),
+            hsl(280, 87%, 65%));
 }
 
-ul li input[type="checkbox"] ~ .checkmark:hover::before {
+ul li input[type="checkbox"]~.checkmark:hover::before {
     content: "";
     width: 23px;
     height: 23px;
@@ -195,12 +221,12 @@ ul li input[type="checkbox"] ~ .checkmark:hover::before {
     display: block;
 }
 
-ul li input[type="checkbox"]:checked ~ .checkmark {
+ul li input[type="checkbox"]:checked~.checkmark {
     background: center url(../images/icon-check.svg) no-repeat,
         linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
-ul li input[type="checkbox"]:checked ~ .text {
+ul li input[type="checkbox"]:checked~.text {
     text-decoration: line-through;
 }
 
@@ -219,24 +245,26 @@ ul li:hover .remove {
     display: block;
 }
 
-.items-left {
-    margin-right: 86px;
-}
-
-.bottom-items {
+.main_bottom-items {
     padding: 20px 20px 20px 27px;
     font-size: 0.8rem;
     letter-spacing: 0.5px;
     align-items: baseline;
     border-radius: 5px;
     background: var(--todo-bg);
+    box-shadow: 0 5px 30px -9px var(--todo-shadow);
 }
 
-.filter {
-    margin-right: 47px;
+.main_bottom-items:nth-child(2n) {
+    margin-top: 1rem;
+    display: none;
 }
 
-.filter input[type="radio"] {
+.main_bottom-items--filter:nth-child(1) {
+    display: none;
+}
+
+.main_bottom-items--filter input[type="radio"] {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -244,24 +272,66 @@ ul li:hover .remove {
     width: 0;
 }
 
-.filter label {
+.main_bottom-items--filter label {
     cursor: pointer;
     padding: 0 10px;
 }
 
-.filter label:hover {
+.main_bottom-items--filter label:hover {
     color: var(--font-color-hover);
 }
 
-.filter input[type="radio"]:checked ~ span {
+.main_bottom-items--filter input[type="radio"]:checked~span {
     color: hsl(221, 62%, 52%);
 }
 
-.clear {
+.main_bottom-items--clear {
     color: var(--font-color);
     cursor: pointer;
 }
 
-.clear:hover {
+.main_bottom-items--clear:hover {
     color: var(--font-color-hover);
+}
+
+/* ========= Section is End ======== */
+
+/* =================================
+    To Do Footer For Mobile Start
+   ================================= */
+
+@media only screen and (max-width:576px) {
+    .main_bottom-items:nth-child(2n) {
+        display: block;
+    }
+
+    .main_bottom-items--filter:nth-child(2) {
+        display: none;
+    }
+
+    .main_bottom-items--filter:nth-child(1) {
+        display: flex;
+        justify-content: center;
+    }
+
+    .main_bottom-items:nth-child(2) input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .main_bottom-items:nth-child(2) label {
+        cursor: pointer;
+        padding: 0 10px;
+    }
+
+    .main_bottom-items:nth-child(2) label:hover {
+        color: var(--font-color-hover);
+    }
+
+    .main_bottom-items:nth-child(2) input[type="radio"]:checked~span {
+        color: hsl(221, 62%, 52%);
+    }
 }
