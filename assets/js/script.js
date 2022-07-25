@@ -1,9 +1,9 @@
 const theme = document.getElementById("theme");
 const newItemInput = document.getElementById("addItem");
-const todoList = document.querySelector(".content ul");
-const itemsLeft = document.querySelector(".items-left span");
+const todoList = document.querySelector(".main_content ul");
+const counter = document.querySelector(".main_bottom-items--counter span");
 
-itemsLeft.innerText = document.querySelectorAll(
+counter.innerText = document.querySelectorAll(
     '.list-item input[type="checkbox"]'
 ).length;
 
@@ -13,7 +13,7 @@ theme.addEventListener("click", () => {
     ];
 });
 
-document.querySelector(".add-new-item span").addEventListener("click", () => {
+document.querySelector(".main_creator span").addEventListener("click", () => {
     if (newItemInput.value.length > 0) {
         createNewTodoItem(newItemInput.value);
         newItemInput.value = "";
@@ -41,7 +41,7 @@ function createNewTodoItem(text) {
     `;
 
     if (
-        document.querySelector('.filter input[type="radio"]:checked').id ===
+        document.querySelector('.main_bottom-items--filter input[type="radio"]:checked').id ===
         "completed"
     ) {
         elem.classList.add("hidden");
@@ -51,7 +51,7 @@ function createNewTodoItem(text) {
 }
 
 function updateItemsCount(number) {
-    itemsLeft.innerText = +itemsLeft.innerText + number;
+    counter.innerText = +counter.innerText + number;
 }
 
 function removeTodoItem(elem) {
@@ -65,7 +65,7 @@ todoList.addEventListener("click", (event) => {
     }
 });
 
-document.querySelector(".clear").addEventListener("click", () => {
+document.querySelector(".main_bottom-items--clear").addEventListener("click", () => {
     document
         .querySelectorAll('.list-item input[type="checkbox"]:checked')
         .forEach((item) => {
@@ -73,7 +73,7 @@ document.querySelector(".clear").addEventListener("click", () => {
         });
 });
 
-document.querySelectorAll(".filter input").forEach((radio) => {
+document.querySelectorAll(".main_bottom-items--filter input").forEach((radio) => {
     radio.addEventListener("change", (e) => {
         filterTodoItems(e.target.id);
     });
@@ -90,16 +90,16 @@ function filterTodoItems(id) {
             break;
         case "active":
             allItems.forEach((item) => {
-                item.querySelector("input").checked
-                    ? item.classList.add("hidden")
-                    : item.classList.remove("hidden");
+                item.querySelector("input").checked ?
+                    item.classList.add("hidden") :
+                    item.classList.remove("hidden");
             });
             break;
         default:
             allItems.forEach((item) => {
-                !item.querySelector("input").checked
-                    ? item.classList.add("hidden")
-                    : item.classList.remove("hidden");
+                !item.querySelector("input").checked ?
+                    item.classList.add("hidden") :
+                    item.classList.remove("hidden");
             });
             break;
     }
